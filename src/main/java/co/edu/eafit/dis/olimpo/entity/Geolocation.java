@@ -10,7 +10,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder
 public class Geolocation {
-	private String id;
 	private String latitude;
 	private String longtitude;
 	private String zoom;

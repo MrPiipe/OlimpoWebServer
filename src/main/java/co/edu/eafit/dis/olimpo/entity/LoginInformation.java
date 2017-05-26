@@ -1,5 +1,11 @@
 package co.edu.eafit.dis.olimpo.entity;
 
+
+
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +17,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Document(collection = "login")
 public class LoginInformation {
-	private long id;
+	@Id
+	private ObjectId id;
 	private String email;
 	private String password;
+	private String role;
+	private String userId; //either user.id or artist.id
 }

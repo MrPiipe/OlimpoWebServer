@@ -3,6 +3,10 @@ package co.edu.eafit.dis.olimpo.entity;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -12,8 +16,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Document(collection = "artwork")
 public class Artwork extends BaseEntity{
-	private long id;
+	@Id
+	private ObjectId id;
 	private String name;
 	private String description;
 	private List<Artist> author;
@@ -22,4 +28,7 @@ public class Artwork extends BaseEntity{
 	private String url;//TODO check more//image/video/audio/text/GIF
 	private Geolocation geolocation;
 	
+	//comments
+	//likes
+	//events
 }

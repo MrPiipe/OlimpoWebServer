@@ -2,8 +2,12 @@ package co.edu.eafit.dis.olimpo.entity;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -11,12 +15,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Artist extends BaseEntity{
+@Data
+@Document(collection= "artist")
+public class Artist{
 	
-	private long id;
-	private LoginInformation loginInformation;
-	private String displayName; //or artistic name
+	@Id
+	private String id;
+	private String displayName;
 	private List<ContactInformation> contacts;
 	private List<ArtType> artTypes;
 	private List<GenderByArtType> genderByArtType;
+	//many artwork
+	//many follower
+	//many event
 }
