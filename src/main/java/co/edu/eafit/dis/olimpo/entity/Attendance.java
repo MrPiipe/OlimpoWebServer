@@ -10,6 +10,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder
 public class Attendance {
+
 	private Event event;
+
 	private User attendant;
 }

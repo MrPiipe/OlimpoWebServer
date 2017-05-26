@@ -2,7 +2,6 @@ package co.edu.eafit.dis.olimpo.entity;
 
 import java.util.List;
 
-import co.edu.eafit.dis.olimpo.entity.LoginInformation.LoginInformationBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,5 +15,5 @@ import lombok.ToString;
 @Builder
 public class GenderByArtType {
 	private ArtType artType;
-	private List<String> gender;
+	private List<String> genders;
 }
