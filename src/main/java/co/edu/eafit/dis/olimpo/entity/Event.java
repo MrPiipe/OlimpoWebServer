@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -16,6 +17,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Data
 @Document(collection = "event")
 public class Event {
 	@Id
@@ -25,8 +27,7 @@ public class Event {
 	private Date startDate;
 	private Date endDate;
 	private Geolocation location;
-	
-	
+
 	//Many to Many
 	private List<Artist> artists;
 	//Many to Many
