@@ -1,5 +1,6 @@
 package co.edu.eafit.dis.olimpo.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.bson.types.ObjectId;
@@ -33,6 +34,11 @@ public class ArtistServiceImpl implements ArtistService{
 	@Override
 	public void delete(ObjectId id) {
 		artistRepo.deleteById(id);
+	}
+
+	@Override
+	public List<Artist> getAllArtist() {
+		return artistRepo.findAll();
 	}
 
 }

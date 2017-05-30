@@ -1,5 +1,6 @@
 package co.edu.eafit.dis.olimpo.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.bson.types.ObjectId;
@@ -20,6 +21,11 @@ public class ArtistController {
 
 	@Autowired
 	private ArtistService artistService;
+	
+	@RequestMapping(value = "artist", method = RequestMethod.GET )
+	public List<Artist> getAllArtist() {
+		return artistService.getAllArtist();
+	}
 
 	@RequestMapping(value = "artist/{id}", method = RequestMethod.GET )
 	public Artist getById(@PathVariable(value = "id") String id) {
