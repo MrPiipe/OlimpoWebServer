@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,16 +37,19 @@ public class ArtworkController {
 		}
 	}
 
+	@PreAuthorize("hasAuthority('ARTIST')")
 	@RequestMapping(value = "artwork", method = RequestMethod.POST)
 	public Artwork saveArtwork(@RequestBody Artwork artwork) { // TODO Set ID
 		return artworkService.create(artwork);
 	}
 
+	@PreAuthorize("hasAuthority('ARTIST')")
 	@RequestMapping(value = "artwork/{id}", method = RequestMethod.PUT)
 	public Artwork updateArtwork(@RequestBody Artwork artwork) {
 		return artworkService.update(artwork);
 	}
 
+	@PreAuthorize("hasAuthority('ARTIST')")
 	@RequestMapping(value = "artwork/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteArtwork(@PathVariable(value = "id") String id) {

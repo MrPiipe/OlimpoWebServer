@@ -1,6 +1,7 @@
 package co.edu.eafit.dis.olimpo.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -18,8 +19,10 @@ import lombok.ToString;
 public class LoginInformation {
 	@Id
 	private String id;
+	@Indexed(unique = true) 
 	private String email;
 	private String password;
-	private String role;
+	private UserRole role; //ARTIST, USER
 	private String userId; //either user.id or artist.id
+	
 }

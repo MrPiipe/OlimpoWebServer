@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,14 @@ public class ArtistController {
 	@Autowired
 	private ArtistService artistService;
 	
+	@PreAuthorize("hasAuthority('ARTIST')")
+	@RequestMapping(value = "currentArtist", method = RequestMethod.GET )
+	public Artist getCurrenctArtist() {
+		return null;
+		//return artistService.getAllArtist();
+	}
+	
+	@PreAuthorize("hasAuthority('ARTIST')")
 	@RequestMapping(value = "artist", method = RequestMethod.GET )
 	public List<Artist> getAllArtist() {
 		return artistService.getAllArtist();
@@ -36,16 +45,19 @@ public class ArtistController {
 		}
 	}
 
+	@PreAuthorize("hasAuthority('ARTIST')")
 	@RequestMapping(value = "artist", method = RequestMethod.POST)
 	public Artist saveArtist(@RequestBody Artist artist) {
 		return artistService.create(artist);
 	}
 
+	@PreAuthorize("hasAuthority('ARTIST')")
 	@RequestMapping(value = "artist/{id}", method = RequestMethod.PUT)
 	public Artist updateArtist(@RequestBody Artist artist) {
 		return artistService.update(artist);
 	}
 
+	@PreAuthorize("hasAuthority('ARTIST')")
 	@RequestMapping(value = "artist/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteArtist(@PathVariable(value = "id") String id) {
