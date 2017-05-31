@@ -3,7 +3,6 @@ package co.edu.eafit.dis.olimpo.entity;
 import java.util.Date;
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -21,7 +20,7 @@ import lombok.ToString;
 @Document(collection = "event")
 public class Event {
 	@Id
-	private ObjectId id;
+	private String id;
 	private String name;
 	private String description;
 	private Date startDate;

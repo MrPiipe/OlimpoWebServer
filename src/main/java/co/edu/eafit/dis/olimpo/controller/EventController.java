@@ -2,7 +2,6 @@ package co.edu.eafit.dis.olimpo.controller;
 
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +22,7 @@ public class EventController {
 
 	@RequestMapping(value = "event/{id}", method = RequestMethod.GET )
 	public Event getById(@PathVariable(value = "id") String id) {
-		Optional<Event> event = eventService.getById(new ObjectId(id));
+		Optional<Event> event = eventService.getById(new String(id));
 		if (event.isPresent()) {
 			return event.get();
 		} else {
@@ -45,6 +44,6 @@ public class EventController {
 	@RequestMapping(value = "event/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteEvent(@PathVariable(value = "id") String id) {
-		eventService.delete(new ObjectId(id));
+		eventService.delete(new String(id));
 	}
 }

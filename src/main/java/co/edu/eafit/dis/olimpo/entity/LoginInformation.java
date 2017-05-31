@@ -1,8 +1,5 @@
 package co.edu.eafit.dis.olimpo.entity;
 
-
-
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,7 +17,7 @@ import lombok.ToString;
 @Document(collection = "login")
 public class LoginInformation {
 	@Id
-	private ObjectId id;
+	private String id;
 	private String email;
 	private String password;
 	private String role;

@@ -3,7 +3,6 @@ package co.edu.eafit.dis.olimpo.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +28,7 @@ public class ArtistController {
 
 	@RequestMapping(value = "artist/{id}", method = RequestMethod.GET )
 	public Artist getById(@PathVariable(value = "id") String id) {
-		Optional<Artist> artist = artistService.getById(new ObjectId(id));
+		Optional<Artist> artist = artistService.getById(new String(id));
 		if (artist.isPresent()) {
 			return artist.get();
 		} else {
@@ -50,6 +49,6 @@ public class ArtistController {
 	@RequestMapping(value = "artist/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteArtist(@PathVariable(value = "id") String id) {
-		artistService.delete(new ObjectId(id));
+		artistService.delete(new String(id));
 	}
 }

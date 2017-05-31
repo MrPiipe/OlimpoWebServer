@@ -1,8 +1,8 @@
 package co.edu.eafit.dis.olimpo.controller;
 
+import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +21,14 @@ public class ArtworkController {
 	@Autowired
 	private ArtworkService artworkService;
 
+	@RequestMapping(value = "artwork", method = RequestMethod.GET )
+	public List<Artwork> getAllArtwork() {
+		return artworkService.getAllArtwork();
+	}
+	
 	@RequestMapping(value = "artwork/{id}", method = RequestMethod.GET )
 	public Artwork getById(@PathVariable(value = "id") String id) {
-		Optional<Artwork> artwork = artworkService.getById(new ObjectId(id));
+		Optional<Artwork> artwork = artworkService.getById(new String(id));
 		if (artwork.isPresent()) {
 			return artwork.get();
 		} else {
@@ -44,6 +49,6 @@ public class ArtworkController {
 	@RequestMapping(value = "artwork/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteArtwork(@PathVariable(value = "id") String id) {
-		artworkService.delete(new ObjectId(id));
+		artworkService.delete(new String(id));
 	}
 }
