@@ -1,8 +1,8 @@
 package co.edu.eafit.dis.olimpo.service;
 
+import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class ArtworkServiceImpl implements ArtworkService {
 	private ArtworkRepository artworkRepo;
 
 	@Override
-	public Optional<Artwork> getById(ObjectId id) {
+	public Optional<Artwork> getById(String id) {
 		return artworkRepo.findById(id);
 	}
 
@@ -31,8 +31,14 @@ public class ArtworkServiceImpl implements ArtworkService {
 	}
 
 	@Override
-	public void delete(ObjectId id) {
+	public void delete(String id) {
 		artworkRepo.deleteById(id);
 	}
+	
+	@Override
+	public List<Artwork> getAllArtwork() {
+		return artworkRepo.findAll();
+	}
+
 }
 

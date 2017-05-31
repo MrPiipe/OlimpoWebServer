@@ -2,7 +2,6 @@ package co.edu.eafit.dis.olimpo.controller;
 
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +22,7 @@ public class UserController {
 
 	@RequestMapping(value = "user/{id}", method = RequestMethod.GET )
 	public User getById(@PathVariable(value = "id") String id) {
-		Optional<User> user = userService.getById(new ObjectId(id));
+		Optional<User> user = userService.getById(new String(id));
 		if (user.isPresent()) {
 			return user.get();
 		} else {
@@ -44,6 +43,6 @@ public class UserController {
 	@RequestMapping(value = "user/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteUser(@PathVariable(value = "id") String id) {
-		userService.delete(new ObjectId(id));
+		userService.delete(new String(id));
 	}
 }

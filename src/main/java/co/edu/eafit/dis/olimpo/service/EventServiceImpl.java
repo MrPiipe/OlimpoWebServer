@@ -2,7 +2,6 @@ package co.edu.eafit.dis.olimpo.service;
 
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ public class EventServiceImpl implements EventService{
 	private EventRepository eventRepo;
 
 	@Override
-	public Optional<Event> getById(ObjectId id) {
+	public Optional<Event> getById(String id) {
 		return eventRepo.findById(id);
 	}
 
@@ -31,7 +30,7 @@ public class EventServiceImpl implements EventService{
 	}
 
 	@Override
-	public void delete(ObjectId id) {
+	public void delete(String id) {
 		eventRepo.deleteById(id);
 	}
 }

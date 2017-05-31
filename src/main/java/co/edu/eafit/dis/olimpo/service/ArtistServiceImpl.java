@@ -3,7 +3,6 @@ package co.edu.eafit.dis.olimpo.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,7 @@ public class ArtistServiceImpl implements ArtistService{
 	private ArtistRepository artistRepo;
 
 	@Override
-	public Optional<Artist> getById(ObjectId id) {
+	public Optional<Artist> getById(String id) {
 		return artistRepo.findById(id);
 	}
 
@@ -32,7 +31,7 @@ public class ArtistServiceImpl implements ArtistService{
 	}
 
 	@Override
-	public void delete(ObjectId id) {
+	public void delete(String id) {
 		artistRepo.deleteById(id);
 	}
 
