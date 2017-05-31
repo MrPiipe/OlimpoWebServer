@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,11 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@RequestMapping(value = "currentUser", method = RequestMethod.GET )
+	public User getCurrentUser() {
+		return null;
+	}
 
 	@RequestMapping(value = "user/{id}", method = RequestMethod.GET )
 	public User getById(@PathVariable(value = "id") String id) {
@@ -30,11 +36,13 @@ public class UserController {
 		}
 	}
 
+	@PreAuthorize("hasAuthority('USER')")
 	@RequestMapping(value = "user", method = RequestMethod.POST)
 	public User saveUser(@RequestBody User user) {
 		return userService.create(user);
 	}
 
+	@PreAuthorize("hasAuthority('USER')")
 	@RequestMapping(value = "user/{id}", method = RequestMethod.PUT)
 	public User updateUser(@RequestBody User user) {
 		return userService.update(user);

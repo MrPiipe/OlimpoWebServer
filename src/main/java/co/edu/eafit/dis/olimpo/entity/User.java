@@ -16,7 +16,6 @@ import lombok.ToString;
 public class User{
 	@Id
 	private String id;
-	private LoginInformation loginInformation;
 	private ContactInformation contactInformation;
 	private String profilePicture;
 	
